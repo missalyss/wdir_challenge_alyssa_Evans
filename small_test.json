@@ -1,7 +1,4 @@
-  {
-    "tag": "section",
-    "content": {
-      "tag": "p",
-      "content": "Hello world!"
-    }
-  }
+{
+  "tag": "section",
+  "content": "Hello world!"
+}
