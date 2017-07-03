@@ -1,4 +1,6 @@
-{
-  "tag": "section",
-  "content": "Hello world!"
-}
+[
+  {
+    "tag": "section",
+    "content": "Hello world!"
+  }
+]
