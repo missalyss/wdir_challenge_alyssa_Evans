@@ -1,13 +1,6 @@
   {
     "tag": "section",
     "content": {
-      "tag": "h2",
-      "content": "This file is a bit more complicated because:"
-    }
-  },
-  {
-    "tag": "section",
-    "content": {
       "tag": "ol",
       "content": [
         {
