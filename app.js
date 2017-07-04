@@ -1,45 +1,53 @@
-  $('.file-upload').change(() => {
-    let $file = $('#json-file')[0]['files']
-    let file = $file[0]
+// On selecting a json file, the file is read, parsed, and sent to loop function and jsonRecursion to read deep into the objects.
 
-    let fr = new FileReader()
-    fr.readAsText(file)
-    fr.onload = (function () {
-      return readAndParse
-    })()
+$('.file-upload').change(() => {
+  let $file = $('#json-file')[0]['files']
+  let file = $file[0]
 
-    function readAndParse(e) {
-     let result = e.target.result
-     let parseObj = JSON.parse(result)
-     return loop(parseObj, '.json-render')
-    }
+  let fr = new FileReader()
+  fr.readAsText(file)
+  fr.onload = (function () {
+    return readAndParse
+  })()
 
-    function loop(jsonObj, parent) {
-      jsonObj.forEach(obj => {
-        console.log('fe obj ', obj);
-        if (obj.content.tag) {
-          return jsonRecursion(obj, parent)
-        } else if (Array.isArray(obj.content)) {
-          $(parent).append(`<${obj.tag}>`)
-          return loop(obj.content, obj.tag)
-        } else {
-          return $(parent).append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
-        }
+  function readAndParse(e) {
+   let result = e.target.result
+   let parseObj = JSON.parse(result)
+   return loop(parseObj, '.json-render')
+  }
+})
 
-      })
-      // return $('.file-render').replaceWith(jsonObj)
-    }
-//either its appending twice at the beginning or end.
-    function jsonRecursion(obj, parent) {
-      console.log('justObj ', obj)
-      if (obj.content.tag) {
-        $(parent).append(`<${obj.tag}>`)
-        return $(`${obj.tag}`).append(jsonRecursion(obj.content, obj.tag))
-      } else if (Array.isArray(obj.content)) {
-        $(parent).append(`<${obj.tag}>`)
-        return loop(obj.content, obj.tag)
-      }
-      return $(parent).append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
-    }
 
+function loop(jsonObj, parent) {
+  let objMap = jsonObj.map(obj => {
+    console.log('4e obj ', obj);
+    return $('.file-render').replaceWith(jsonRecursion(obj, parent))
+
+    // if (obj.content.tag) {
+    // } else if (Array.isArray(obj.content)) {
+    //   // $(parent).append(`<${obj.tag}>`)
+    //   return jsonRecursion(obj, parent)
+    // } else {
+    //   return $(parent).append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
+    // }
+    //
   })
+  console.log('objmap ', objMap);
+}
+
+function jsonRecursion(obj, parent) {
+  console.log('justObj ', obj)
+
+  if (obj.content.tag) {
+    $(parent).append(`<${obj.tag}>`)
+    return $(`${obj.tag}`).append(jsonRecursion(obj.content, obj.tag))
+  }
+  else if (Array.isArray(obj.content)) {
+    $(parent).append(`<${obj.tag}>`)
+    obj.content.forEach(el => {
+
+      return jsonRecursion(el, obj.tag)
+    })
+  }
+  return $(parent).append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
+}
