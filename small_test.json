@@ -4,7 +4,7 @@
     "content": "Hello world!"
   },
   {
-    "tag": "",
+    "tag": "section",
     "content": {
       "tag": "div",
       "content": {

@@ -23,6 +23,7 @@ function loop(file) {
     console.log('html str ', str);
     return str
   }, '<div class="json-render">')
+  html.concat('</div>')
   let thisFile = $('.json-render').replaceWith(html)
   console.log(thisFile);
   return thisFile
