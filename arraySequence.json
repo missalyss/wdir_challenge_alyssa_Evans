@@ -1,0 +1,24 @@
+[
+  {
+    "tag": "ol",
+    "content": [
+      {
+        "tag": "li",
+        "content": "array[0] in first content array"
+      },
+      {
+        "tag": "li",
+        "content": [
+          {
+            "tag": "strong",
+            "content": "array[1][0] as this is a span."
+          }
+        ]
+      },
+      {
+        "tag": "li",
+        "content": "array[2]"
+      }
+    ]
+  }
+]
