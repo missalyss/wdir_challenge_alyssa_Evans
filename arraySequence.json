@@ -20,5 +20,12 @@
         "content": "array[2]"
       }
     ]
+  },
+  {
+    "tag": "p",
+    "content": {
+      "tag": "span",
+      "content": "stuff"
+    }
   }
 ]

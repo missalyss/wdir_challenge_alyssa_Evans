@@ -12,33 +12,33 @@
     function readAndParse(e) {
      let result = e.target.result
      let parseObj = JSON.parse(result)
-     return loop(parseObj)
+     return loop(parseObj, '.json-render')
     }
 
-    function loop(jsonFile) {
+    function loop(jsonFile, parent) {
       jsonFile.forEach(obj => {
         console.log('fe obj ', obj);
         if (obj.content.tag) {
-          jsonRecursion(obj)
-        } else if (Array.isArray(obj)) {
-          loop(obj)
+          jsonRecursion(obj, parent)
+        } else if (Array.isArray(obj.content)) {
+          $(parent).append(`<${obj.tag}>`)
+          loop(obj.content, obj.tag)
         } else {
-          append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
+          return $(parent).append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
         }
       })
     }
 
-    function jsonRecursion(obj) {
+    function jsonRecursion(obj, parent) {
       console.log('justObj ', obj)
       if (obj.content.tag) {
-        append(`<${obj.tag}>`)
-        return $(`${obj.tag}`).append(jsonRecursion(obj.content))
+        $(parent).append(`<${obj.tag}>`)
+        return $(`${obj.tag}`).append(jsonRecursion(obj.content, obj.tag))
+      } else if (Array.isArray(obj.content)) {
+        $(parent).append(`<${obj.tag}>`)
+        loop(obj.content, obj.tag)
       }
-      return `<${obj.tag}>${obj.content}</${obj.tag}>`
-    }
-
-    function append (html) {
-      $('.json-render').append(html)
+      return $(parent).append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
     }
 
   })
