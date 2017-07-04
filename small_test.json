@@ -2,5 +2,22 @@
   {
     "tag": "section",
     "content": "Hello world!"
+  },
+  {
+    "tag": "",
+    "content": {
+      "tag": "div",
+      "content": {
+        "tag": "",
+        "content": "hello again"
+      }
+    }
+  },
+  {
+    "tag": "div",
+    "content": {
+      "tag": "h1",
+      "content": "I said hi."
+    }
   }
 ]
