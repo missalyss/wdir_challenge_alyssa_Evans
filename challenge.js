@@ -1,4 +1,4 @@
-// On selecting a json file, the file is read, parsed, and sent to loop function and jsonRecursion to read deep into the objects.
+// On selecting a json file, the file is read, parsed, and sent to loop function then jsonRecursion to read deep into the objects and concatenate all html together.
 
 $('.file-upload').change(() => {
   let $file = $('#json-file')[0]['files']
@@ -18,14 +18,15 @@ $('.file-upload').change(() => {
 })
 
 function loop(file) {
-  let html = file.reduce(function(accum, current, index, array){
+  let html = file.reduce(function(accum, current){
     let str = accum.concat(jsonRecursion(current))
-    console.log('html str ', str);
+
     return str
   }, '<div class="json-render">')
+
   html.concat('</div>')
   let thisFile = $('.json-render').replaceWith(html)
-  console.log(thisFile);
+
   return thisFile
 }
 
@@ -34,11 +35,14 @@ function jsonRecursion(obj) {
     return (`<${obj.tag}>`).concat(jsonRecursion(obj.content, obj.tag)).concat(`</${obj.tag}>`)
   }
   else if (Array.isArray(obj.content)) {
+    
     let objHtml = obj.content.reduce(function(accum, current){
       let objStr = accum.concat(jsonRecursion(current))
       return objStr
     }, `<${obj.tag}>`)
+
     objHtml.concat(`</${obj.tag}>`)
+
     return objHtml
   }
   return `<${obj.tag}>${obj.content}</${obj.tag}>`

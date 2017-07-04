@@ -1,26 +1,9 @@
 [
   {
     "tag": "section",
-    "content": "Hello world!"
-  },
-  {
-    "tag": "section",
     "content": {
-      "tag": "div",
-      "content": {
-        "tag": "p",
-        "content": {
-          "tag": "span",
-          "content": "hello again"
-        }
-      }
-    }
-  },
-  {
-    "tag": "div",
-    "content": {
-      "tag": "h1",
-      "content": "I said hi."
+      "tag": "p",
+      "content": "Hello world!"
     }
   }
 ]
