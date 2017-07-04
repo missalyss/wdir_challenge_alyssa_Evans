@@ -1,53 +1,46 @@
-
 [
+  {
+    "tag": "p",
+    "content": "Step 1, un-nested."
+  },
   {
     "tag": "section",
     "content": {
-      "tag": "h2",
-      "content": "Welcome to My Page!"
+      "tag": "p",
+      "content": "step 2, one nested"
     }
   },
   {
     "tag": "section",
-    "content": [
-      {
-        "tag": "h3",
-        "content": "My Favorite Things"
-      },
-      {
-        "tag": "ul",
-        "content": [
-          {
-            "tag": "li",
-            "content": "<img src='http://placekitten.com/g/200/200'/>"
-          },
-          {
-            "tag": "li",
-            "content": "<img src='http://placekitten.com/g/201/200'/>"
-          },
-          {
-            "tag": "li",
-            "content": "<img src='http://placekitten.com/g/200/201'/>"
-          }
-        ]
-      },
-      {
-        "tag": "p",
-        "content": [
-          {
-            "tag": "span",
-            "content": "In short, I "
-          },
-          {
-            "tag": "strong",
-            "content": "just love"
-          },
-          {
-            "tag": "span",
-            "content": " kittens!"
-          }
-        ]
+    "content": {
+      "tag": "div",
+      "content": {
+          "tag": "p",
+          "content": "step 3, double nested"
       }
-    ]
+    }
+  },
+  {
+    "tag": "section",
+    "content": {
+      "tag": "ol",
+      "content": [
+        {
+          "tag":"li",
+          "content": {
+            "tag":"strong",
+            "content": "yay i think it works!!"
+          }
+        },
+
+          {
+              "tag": "li",
+            "content": {
+              "tag": "span",
+              "content": "There are multiple levels of nesting."
+            }
+          }
+        ]
+    }
   }
 ]

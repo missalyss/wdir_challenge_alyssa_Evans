@@ -33,18 +33,13 @@ function jsonRecursion(obj) {
   if (obj.content.tag) {
     return (`<${obj.tag}>`).concat(jsonRecursion(obj.content, obj.tag)).concat(`</${obj.tag}>`)
   }
+  else if (Array.isArray(obj.content)) {
+    let objHtml = obj.content.reduce(function(accum, current){
+      let objStr = accum.concat(jsonRecursion(current))
+      return objStr
+    }, `<${obj.tag}>`)
+    objHtml.concat(`</${obj.tag}>`)
+    return objHtml
+  }
   return `<${obj.tag}>${obj.content}</${obj.tag}>`
 }
-
-
-//   $(parent).append(`<${obj.tag}>`)
-//   return $(`${obj.tag}`).append(jsonRecursion(obj.content, obj.tag))
-// }
-// else if (Array.isArray(obj.content)) {
-//   $(parent).append(`<${obj.tag}>`)
-//   obj.content.forEach(el => {
-//
-//     return jsonRecursion(el, obj.tag)
-//   })
-// }
-// return $(parent).append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
