@@ -19,7 +19,7 @@ $('.file-upload').change(() => {
 
 
 function loop(jsonObj, parent) {
-  let objMap = jsonObj.map(obj => {
+  jsonObj.forEach(obj => {
     console.log('4e obj ', obj);
     return $('.file-render').replaceWith(jsonRecursion(obj, parent))
 
@@ -32,7 +32,7 @@ function loop(jsonObj, parent) {
     // }
     //
   })
-  console.log('objmap ', objMap);
+
 }
 
 function jsonRecursion(obj, parent) {
