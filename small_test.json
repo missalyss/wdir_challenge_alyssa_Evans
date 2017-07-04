@@ -8,8 +8,11 @@
     "content": {
       "tag": "div",
       "content": {
-        "tag": "",
-        "content": "hello again"
+        "tag": "p",
+        "content": {
+          "tag": "span",
+          "content": "hello again"
+        }
       }
     }
   },
