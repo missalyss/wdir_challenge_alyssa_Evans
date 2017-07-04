@@ -11,7 +11,6 @@
     function readAndParse(e) {
      let result = e.target.result
      let parseObj = JSON.parse(result)
-     $('.file-render').replaceWith(parseObj)
      return loop(parseObj, '.json-render')
     }
 
@@ -26,7 +25,9 @@
         } else {
           return $(parent).append(`<${obj.tag}>${obj.content}</${obj.tag}>`)
         }
+
       })
+      // return $('.file-render').replaceWith(jsonObj)
     }
 //either its appending twice at the beginning or end.
     function jsonRecursion(obj, parent) {
