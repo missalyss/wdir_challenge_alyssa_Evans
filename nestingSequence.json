@@ -13,16 +13,6 @@
   {
     "tag": "section",
     "content": {
-      "tag": "div",
-      "content": {
-          "tag": "p",
-          "content": "step 3, double nested"
-      }
-    }
-  },
-  {
-    "tag": "section",
-    "content": {
       "tag": "ol",
       "content": {
           "tag": "li",

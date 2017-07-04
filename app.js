@@ -30,13 +30,11 @@
 
     function jsonRecursion(obj) {
       console.log('justObj ', obj)
-
-          if (obj.content.tag) {
-            append(`<${obj.content.tag}>`)
-            jsonRecursion(obj.content)
-            $(`${obj.content.tag}`).append(`${obj.content.content}`)
-          }
-            // append(`</${obj.tag}>`)
+      if (obj.content.tag) {
+        append(`<${obj.tag}>`)
+        return $(`${obj.tag}`).append(jsonRecursion(obj.content))
+      }
+      return `<${obj.tag}>${obj.content}</${obj.tag}>`
     }
 
     function append (html) {
